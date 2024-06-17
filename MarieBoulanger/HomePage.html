@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<style>
+
+    body{
+        overflow:hidden ;
+    }
+
+    div{
+        text-align: center;
+        margin-bottom:4vh;
+        display:block;
+        background-color: #EFE2D1;
+        width:100%;
+        height:20vh;
+    }
+
+    div > img{
+        height:3vh;
+        width:auto;
+        margin-top:4vw;
+
+    }
+
+    #capa1{
+        width:auto;
+        height:8vw;
+        margin: 5vw 5vw 0 50vw;
+    }
+
+    header{
+        top:0;
+        width:100%;
+        height:16vw;
+        text-align: center;
+    }
+
+    #salas{
+        top:27.5vh;
+        z-index: 100;
+        display: flex;
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .coluna{
+        display: flex;
+        position: relative;
+        width: 30vw;
+        height: 100%;
+        flex-direction: column;
+        justify-content: flex-start
+    }
+
+    #type{
+        margin-top:24vh;
+    }
+
+    #brandType{
+        margin-top:48vh;
+    }
+
+    div:hover{
+        background-color:#F4BFC2;
+    }
+
+</style>
+
+<body>
+<header>
+ <img id="capa1" src="images/header.png">
+</header>
+
+<section id="salas">
+    <section class="coluna">
+        <a href="abou.html">
+        <div id="about">
+            <img src="images/About.png">
+        </div>
+        </a>
+
+        <a target="_blank" href="https://www.youtube.com/watch?v=7S9hgRldin8&ab_channel=TypeCon">
+        <div id="thesis">
+            <img src="images/thesis.png">
+        </div>
+        </a>
+    </section>
+
+    <section class="coluna" id="type">
+        <a href="TYPE.html">
+        <div>
+            <img src="images/type.png">
+        </div>
+        </a>
+
+        <a href="36DAYS.html">
+        <div>
+            <img src="images/36days.png">
+        </div>
+        </a>
+    </section>
+
+    <section class="coluna" id="brandType">
+        <a href="BTYPE.html">
+        <div >
+            <img src="images/bType.png">
+        </div>
+        </a>
+    </section>
+
+</section>
+
+<script src="js.js"></script>
+
+</body>
+</html>
+

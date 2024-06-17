@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+        window.onload = () => {
+        var start = document.querySelector('#btn');
+        var configlang = document.querySelector('#config-lang');
+        var configcont = document.querySelector('#config-cont');
+        var recognition = new webkitSpeechRecognition(); // new SpeechRec object\
+        var ws;
+
+        recognition.continuous = true; // if true after mic permission is given records continuosly
+        recognition.lang = 'en-US'; // set lenguage using lenguage code Ex. pt-BR, en-US, en-GB...
+        start.onclick = () => recognition.start(); // bind the start function to the button on screen
+        recognition.onend = recognition.start; // make the end event execute the start function for continuous reactivation
+        //check for support on browser
+        function checkWebSocket() {
+        if ("WebSocket" in window) {
+            ws = new WebSocket("ws://localhost:1337/p5websocket") // start the websocket
+            ws.onerror = () => {
+            alert('WebSocket conection could not be stabilished. is processing running?');
+            start.disabled = true;};   // if no conection
+        } else {
+            alert("WebSocket NOT supported by your Browser!");
+        }
+        }
+        checkWebSocket();
+        recognition.onresult = event => ws.send(event.results[event.results.length-1][0].transcript); // send the string via websocket
+        document.querySelector('#config-btn').onclick = () => {
+            checkWebSocket();
+            recognition.lang = configlang.value;
+            recognition.continuous = configcont.checked;
+        };
+    }
+</script>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+    <label for="lang">Linguagem</label>
+    <select name="lang" id="config-lang">
+        <option value="en-US">en-US</option>
+        <option value="pt-BR">pt-BR</option>
+        <option value="pt-PT">pt-PT</option>
+        <option value="en-US">en-GB</option>
+    </select>
+    
+    <label for="cont">Continuo</label>
+    <input type="checkbox" name="cont" id="config-cont" checked>
+
+    <button id ='config-btn' type="submit">update</button>
+    </div>
+    
+    <button class="btn" id="btn" type="button">Start recording</button>
+</body>
+</html>
